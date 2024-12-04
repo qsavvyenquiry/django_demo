@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Update Course
+{% endblock %}
+
+
+{% block content %}
+<div class="container mt-5">
+
+  <form method = "post" enctype="multipart/form-data" class=" col-6 max-auto card p-3 shadow-lg">
+
+     {% csrf_token %}
+
+       <h1 class="text-info">Update Course Details</h1>
+    <label for="course_name">Course Name: </label>
+    <input id="course_name"  class="form-control" value ="{{ data.course }}" type="text" name="course_name" required>
+        <label for="course_details">Course Content: </label>
+    <textarea id="course_details" rows="5"  value= "" name="course_details" class="form-control" required> {{ data.content }}</textarea>
+       <label for="course_duration">Course Duration: </label>
+    <input id="course_duration" type="text" value= " {{ data.duration }}" name="course_duration" class="form-control" required>
+
+      <button type="submit" class="btn btn-warning mt-3">Update</button>
+</form>
+</div>
+
+{% endblock %}

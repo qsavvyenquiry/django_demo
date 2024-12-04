@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Add Course
+{% endblock %}
+
+
+{% block content %}
+<div class="container mt-5">
+
+  <form action =" " method = "post" enctype="multipart/form-data" class=" col-6 max-auto card p-3 shadow-lg">
+
+     {% csrf_token %}
+       <h1 class="text-info">Add Course Details</h1>
+    <label for="course_name">Course Name: </label>
+    <input id="course_name"  class="form-control"type="text" name="course_name" required>
+        <label for="course_details">Course Content: </label>
+    <textarea  rows="5" id="course_details" name="course_details" class="form-control" required></textarea>
+       <label for="course_duration">Course Duration: </label>
+    <input id="course_duration" type="text" name="course_duration" class="form-control" required>
+     <button type="submit" class="btn btn-warning mt-3">Submit</button>
+</form>
+</div>
+<div class="mt-5 container">
+    <h1 class="text-info">Course Details</h1>
+    <table class="table table-striped ">
+
+    <tr>
+        <th class="text-info">
+            S.No
+        </th>
+        <th class="text-info">
+      Course
+        </th>
+        <th class="text-info">
+           Course Content
+        </th>
+        <th class="text-info">
+           Duration [ In Months]
+        </th>
+    </tr>
+
+    <tr>
+     {% for cdata in data %}
+        <th scope="row" > {{ forloop.counter}}</th>
+        <td>
+         {{cdata.course}}
+        </td>
+        <td>
+        {{cdata.content}}
+        </td>
+        <td>
+         {{cdata.duration}}
+        </td>
+    </tr>
+{% endfor %}
+    </table>
+</div>
+{% endblock %}

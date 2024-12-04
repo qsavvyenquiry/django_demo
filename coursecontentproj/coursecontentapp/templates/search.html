@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}
+   home
+    {% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class=" text-info"> Search Course Details</h1>
+<form action ="" method = "GET"  class=" col-6 max-auto card p-3 shadow-lg">
+
+    <input id="search"  class="form-control" type="text" name="search" required>
+    <button type="submit" class="btn btn-primary mt-3">Search</button>
+
+ </form>
+</div>
+<div class="mt-5 container">
+    <h1 class="text-info">Course Details</h1>
+    <table class="table table-striped ">
+
+    <tr>
+        <th class="text-info">
+            S.No
+        </th>
+        <th class="text-info">
+      Course
+        </th>
+        <th class="text-info">
+           Course Content
+        </th>
+        <th class="text-info">
+           Duration [ In Months]
+        </th>
+        <th class="text-info">
+           Actions On Course
+        </th>
+    </tr>
+
+    <tr>
+
+     {% for cdata in data %}
+        <th scope="row" > {{ forloop.counter}}</th>
+        <td>
+         {{cdata.course}}
+        </td>
+        <td>
+        {{cdata.content}}
+        </td>
+        <td>
+         {{cdata.duration}}
+        </td>
+         <td>
+             <a href="/update_course/{{cdata.id}}" class="btn btn-primary">Update</a>
+              <a href="/delete_course/{{cdata.id }}" class="btn btn-danger">Delete</a>
+
+        </td>
+    </tr>
+{% endfor %}
+
+
+    </table>
+</div>
+{% endblock %}
+
